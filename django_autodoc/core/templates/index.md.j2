@@ -1,0 +1,46 @@
+# Project Documentation
+
+This documentation was automatically generated for your Django project.
+
+## Project Overview
+
+Your project contains:
+- {{ models_count }} models
+- {{ urls_count }} URL patterns
+- {{ apps|length }} installed apps
+
+## Installed Applications
+
+{% for app in apps %}
+### {{ app.name }}
+{% if app.models %}
+Contains the following models:
+{% for model in app.models %}
+- {{ model }}
+{% endfor %}
+{% else %}
+No models defined.
+{% endif %}
+{% endfor %}
+
+## Documentation Sections
+
+1. [Models Reference](models.md) - Detailed information about data models
+2. [Views Reference](views.md) - API endpoints and view documentation
+3. [User Guide](user_guide.md) - Task-oriented guide for users
+4. [Admin Guide](admin_guide.md) - Guide for administrators
+
+## Getting Started
+
+To get started with this application:
+
+1. Review the [User Guide](user_guide.md) for basic operations
+2. If you're an administrator, check the [Admin Guide](admin_guide.md)
+3. For technical details, see the [Models Reference](models.md) and [Views Reference](views.md)
+
+## Navigation
+
+- [Models Reference](models.md)
+- [Views Reference](views.md)
+- [User Guide](user_guide.md)
+- [Admin Guide](admin_guide.md) 

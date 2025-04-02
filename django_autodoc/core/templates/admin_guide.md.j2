@@ -1,0 +1,104 @@
+# Administrator Guide
+
+This guide provides information for administrators to manage the application.
+
+## Django Admin Interface
+
+The Django Admin interface is available at `/admin/`. You'll need administrator credentials to access it.
+
+{% if '/admin/' in screenshots %}
+![Admin Interface]({{ screenshots['/admin/'] }})
+{% endif %}
+
+## Models Administration
+
+{% for model_name, model_info in models.items() %}
+### {{ model_name }}
+
+{% if model_info.meta.verbose_name %}
+**Display Name:** {{ model_info.meta.verbose_name }} ({{ model_info.meta.verbose_name_plural }})
+{% endif %}
+
+#### Fields to Monitor
+
+{% for field in model_info.fields %}
+- **{{ field.name }}** ({{ field.type }}){% if field.required %} - Required{% endif %}
+{% endfor %}
+
+{% if model_info.meta.ordering %}
+Records are ordered by: {{ model_info.meta.ordering|join(", ") }}
+{% endif %}
+
+---
+{% endfor %}
+
+## Common Administrative Tasks
+
+### User Management
+
+1. Access the Admin interface at `/admin/`
+2. Navigate to "Users" section
+3. You can:
+   - Create new users
+   - Modify existing users
+   - Set permissions
+   - Deactivate accounts
+
+### Data Management
+
+For each model:
+
+1. Navigate to the model's admin page
+2. Use filters and search to find records
+3. Perform bulk actions when needed
+4. Check the history of changes
+
+### Permissions
+
+The following permissions are available for each model:
+
+- View records
+- Add new records
+- Change existing records
+- Delete records
+
+### Backup and Maintenance
+
+1. Regular backups should be scheduled
+2. Monitor database size and performance
+3. Check error logs regularly
+4. Keep the application updated
+
+## Troubleshooting
+
+Common issues and solutions:
+
+1. **User Can't Log In**
+   - Verify username and password
+   - Check if account is active
+   - Confirm user permissions
+
+2. **Missing Records**
+   - Check filters in the admin view
+   - Verify user has proper permissions
+   - Look for soft-deleted records
+
+3. **Performance Issues**
+   - Monitor database connections
+   - Check server resources
+   - Review long-running queries
+
+## Security Best Practices
+
+1. Regularly update admin passwords
+2. Use strong passwords
+3. Limit admin access to trusted IPs
+4. Enable two-factor authentication if available
+5. Review audit logs regularly
+
+## Navigation
+
+- [Back to Index](index.md)
+- [Models Reference](models.md)
+- [Views Reference](views.md)
+- [User Guide](user_guide.md) 

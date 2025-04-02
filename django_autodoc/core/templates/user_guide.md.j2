@@ -1,0 +1,62 @@
+# User Guide
+
+This guide provides instructions for common tasks and operations in the application.
+
+## Available Pages
+
+{% for url in urls %}
+{% if not url.pattern.startswith('/admin') and not '<' in url.pattern %}
+### {{ url.name if url.name else url.pattern }}
+
+Access this page at: `{{ url.pattern }}`
+
+{% if url.pattern in screenshots %}
+![{{ url.name if url.name else url.pattern }}]({{ screenshots[url.pattern] }})
+{% endif %}
+
+---
+{% endif %}
+{% endfor %}
+
+## Common Tasks
+
+### Navigation
+
+The application provides the following main sections:
+{% for url in urls %}
+{% if not url.pattern.startswith('/admin') and not '<' in url.pattern and url.name %}
+- {{ url.name }}: `{{ url.pattern }}`
+{% endif %}
+{% endfor %}
+
+### Using Forms
+
+When submitting forms in the application:
+
+1. Fill in all required fields (marked with *)
+2. Review your input before submitting
+3. If you encounter errors, check the error messages and correct your input
+
+### Error Messages
+
+If you encounter an error:
+
+1. Read the error message carefully
+2. Check that all required fields are filled
+3. Verify that your input meets any specified requirements
+4. Try the operation again
+5. If the error persists, contact your administrator
+
+## Tips and Tricks
+
+1. Use the navigation menu to move between sections
+2. Most lists can be sorted by clicking column headers
+3. Use the search function when available to find specific items
+4. Your browser's back button works throughout the application
+
+## Navigation
+
+- [Back to Index](index.md)
+- [Models Reference](models.md)
+- [Views Reference](views.md)
+- [Admin Guide](admin_guide.md) 

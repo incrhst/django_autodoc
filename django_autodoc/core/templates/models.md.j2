@@ -1,0 +1,45 @@
+# Models Reference
+
+This section provides detailed information about the data models in your Django project.
+
+{% for model_name, model_info in models.items() %}
+## {{ model_name }}
+
+{% if model_info.meta.verbose_name %}
+**Verbose Name:** {{ model_info.meta.verbose_name }}  
+**Verbose Name Plural:** {{ model_info.meta.verbose_name_plural }}
+{% endif %}
+
+{% if model_info.fields %}
+### Fields
+
+| Field Name | Type | Required | Description |
+|------------|------|----------|-------------|
+{% for field in model_info.fields %}
+| {{ field.name }} | {{ field.type }} | {{ "Yes" if field.required else "No" }} | |
+{% endfor %}
+{% endif %}
+
+{% if model_info.methods %}
+### Methods
+
+{% for method in model_info.methods %}
+- `{{ method }}`
+{% endfor %}
+{% endif %}
+
+{% if model_info.meta.ordering %}
+### Ordering
+
+Default ordering: {{ model_info.meta.ordering|join(", ") }}
+{% endif %}
+
+---
+{% endfor %}
+
+## Navigation
+
+- [Back to Index](index.md)
+- [Views Reference](views.md)
+- [User Guide](user_guide.md)
+- [Admin Guide](admin_guide.md) 

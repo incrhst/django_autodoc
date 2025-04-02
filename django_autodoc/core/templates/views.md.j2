@@ -1,0 +1,33 @@
+# Views Reference
+
+This section documents all available views and endpoints in your Django project.
+
+{% for url in urls %}
+## {{ url.name if url.name else url.pattern }}
+
+**URL Pattern:** `{{ url.pattern }}`  
+{% if url.view_class %}**View Class:** `{{ url.view_class }}`{% endif %}
+{% if url.view_name %}**View Function:** `{{ url.view_name }}`{% endif %}
+
+{% if url.pattern in screenshots %}
+### Screenshot
+![{{ url.name if url.name else url.pattern }}]({{ screenshots[url.pattern] }})
+{% endif %}
+
+---
+{% endfor %}
+
+## URL Patterns Overview
+
+| URL Pattern | Name | View |
+|------------|------|------|
+{% for url in urls %}
+| `{{ url.pattern }}` | {{ url.name if url.name else "-" }} | {{ url.view_class if url.view_class else url.view_name if url.view_name else "-" }} |
+{% endfor %}
+
+## Navigation
+
+- [Back to Index](index.md)
+- [Models Reference](models.md)
+- [User Guide](user_guide.md)
+- [Admin Guide](admin_guide.md) 
