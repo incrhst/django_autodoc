@@ -12,9 +12,27 @@ A powerful documentation generator for Django projects that automatically create
 
 ## Installation
 
+### Local Installation
+
+1. Clone the repository:
 ```bash
-pip install django-autodoc
+git clone https://github.com/incrhst/django_autodoc.git
+cd django_autodoc
 ```
+
+2. Install in development mode:
+```bash
+pip install -e .
+```
+
+This will install the package in "editable" mode, meaning changes to the source code will be reflected immediately without needing to reinstall.
+
+### Requirements
+
+- Python 3.8+
+- Django 3.2+
+- A running Django application (for screenshot capture)
+- Chrome/Chromium browser (for screenshot capture)
 
 ## Usage
 
@@ -30,13 +48,6 @@ Generate documentation with screenshots:
 django-autodoc --project /path/to/myproject --url http://localhost:8000 --username admin --password securepass
 ```
 
-## Requirements
-
-- Python 3.8+
-- Django 3.2+
-- A running Django application (for screenshot capture)
-- Chrome/Chromium browser (for screenshot capture)
-
 ## Documentation Structure
 
 The generated documentation includes:
@@ -46,6 +57,27 @@ The generated documentation includes:
 3. Views Reference with technical details
 4. User Guide with task-oriented instructions
 5. Admin Guide for administrative functions
+
+## Development
+
+To contribute to the project:
+
+1. Fork the repository
+2. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install development dependencies:
+```bash
+pip install -e ".[dev]"
+```
+
+4. Run tests:
+```bash
+python -m unittest discover tests
+```
 
 ## License
 
